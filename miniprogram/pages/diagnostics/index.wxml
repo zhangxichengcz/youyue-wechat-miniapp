@@ -1,5 +1,5 @@
 <view class="page">
-  <view class="title">有约 · 连接帮助</view>
+  <view class="title">见面日程簿 · 连接帮助</view>
   <view class="notice">遇到连接问题时，可以检查下面两项。检测结果便于维护者排查原因。</view>
   <view class="card">
     <view>程序版本：{{build}}</view>

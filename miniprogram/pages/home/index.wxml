@@ -1,6 +1,6 @@
 <view wx:if="{{demo}}" class="demo">演示模式 · 数据仅保存在本机，不发送微信通知</view>
 <view class="page">
-  <view class="row brand"><text class="brand-name">有约 <text class="brand-dot">●</text></text><text class="eyebrow">让相见有期</text></view>
+  <view class="row brand"><text class="brand-name">见面日程簿 <text class="brand-dot">●</text></text><text class="eyebrow">让相见有期</text></view>
   <view class="hero">
     <text class="eyebrow">MAKE TIME, MEET WELL</text>
     <view class="title hero-title">把时间留给<view>值得的见面。</view></view>

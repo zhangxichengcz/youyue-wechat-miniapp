@@ -1,7 +1,7 @@
 {
   "pages": ["pages/home/index", "pages/create/index", "pages/detail/index", "pages/bookings/index", "pages/reschedule/index", "pages/diagnostics/index"],
   "window": {
-    "navigationBarTitleText": "有约",
+    "navigationBarTitleText": "见面日程簿",
     "navigationBarBackgroundColor": "#f8f8f2",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f2"

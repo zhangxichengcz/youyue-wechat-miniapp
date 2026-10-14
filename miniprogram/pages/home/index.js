@@ -15,5 +15,5 @@ Page({
   bookings() { wx.navigateTo({ url: '/pages/bookings/index' }); },
   diagnostics() { wx.navigateTo({ url: '/pages/diagnostics/index' }); },
   detail() { wx.navigateTo({ url: `/pages/detail/index?id=${this.data.next.id}` }); },
-  onShareAppMessage() { return { title: '有约 · 把见面安排好', path: '/pages/home/index' }; }
+  onShareAppMessage() { return { title: '见面日程簿 · 把见面安排好', path: '/pages/home/index' }; }
 });

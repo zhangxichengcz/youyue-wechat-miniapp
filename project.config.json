@@ -1,10 +1,10 @@
 {
-  "description": "有约 · 私人会面与咨询预约",
+  "description": "见面日程簿 · 私人会面与咨询预约",
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "compileType": "miniprogram",
   "appid": "touristappid",
-  "projectname": "有约",
+  "projectname": "见面日程簿",
   "setting": {
     "es6": true,
     "enhance": false,

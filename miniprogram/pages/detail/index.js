@@ -69,6 +69,6 @@ Page({
   onShareAppMessage() {
     const b = this.data.b;
     if (b && b.role === 'sender' && b.status === 'pending' && b.token && b.canAct) return { title: `${b.senderName}邀请你：${b.title}`, path: `/pages/detail/index?id=${b.id}&token=${b.token}` };
-    return { title: '有约 · 把见面安排好', path: '/pages/home/index' };
+    return { title: '见面日程簿 · 把见面安排好', path: '/pages/home/index' };
   }
 });
