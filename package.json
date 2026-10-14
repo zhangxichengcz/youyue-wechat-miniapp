@@ -1,0 +1,13 @@
+{
+  "name": "youyue-wechat-miniapp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "普通用户之间的微信预约与双方提醒",
+  "scripts": {
+    "test": "node --test tests/appointments.test.js tests/reminders.test.js tests/repository.test.js tests/client.test.js tests/free-backend.test.mjs tests/free-entry.test.mjs",
+    "prepare:cloud": "node scripts/prepare-cloud.js",
+    "prepare:free": "node scripts/prepare-free.js",
+    "check": "node scripts/check.js",
+    "preview": "node scripts/preview-server.js"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "instructions": "在云开发控制台手动创建以下复合索引；本文件为配置说明，不是自动导入格式。",
+  "indexes": [
+    { "collection": "bookings", "name": "my_bookings", "fields": [{ "field": "participants", "order": "asc" }, { "field": "createdAt", "order": "desc" }] },
+    { "collection": "bookings", "name": "next_booking", "fields": [{ "field": "participants", "order": "asc" }, { "field": "status", "order": "asc" }, { "field": "startAt", "order": "asc" }] },
+    { "collection": "reminder_jobs", "name": "due_reminders", "fields": [{ "field": "status", "order": "asc" }, { "field": "dueAt", "order": "asc" }] },
+    { "collection": "reminder_jobs", "name": "stale_reminders", "fields": [{ "field": "status", "order": "asc" }, { "field": "claimedAt", "order": "asc" }] }
+  ]
+}

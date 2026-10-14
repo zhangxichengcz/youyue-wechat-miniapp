@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "youyue-free-backend",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-14",
+  "workers_dev": true,
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
+  "vars": {
+    "WX_APPID": "YOUR_WECHAT_APPID",
+    "REMINDER_TEMPLATE_ID": "",
+    "REMINDER_TITLE_FIELD": "thing1",
+    "REMINDER_TIME_FIELD": "time2",
+    "REMINDER_LOCATION_FIELD": "thing3",
+    "MINIPROGRAM_STATE": "trial"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "youyue-bookings",
+      "database_id": "YOUR_D1_DATABASE_ID"
+    }
+  ],
+  "observability": {
+    "enabled": false
+  }
+}

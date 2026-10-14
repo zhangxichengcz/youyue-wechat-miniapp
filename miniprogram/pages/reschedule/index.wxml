@@ -1,0 +1,11 @@
+<view wx:if="{{demo}}" class="demo">演示模式 · 本机体验，不发送微信通知</view>
+<view class="page"><text class="eyebrow">A NEW TIME FOR US</text><view class="title">换个好时间</view>
+  <view wx:if="{{loading}}" class="empty">正在查看预约…</view>
+  <block wx:elif="{{b}}"><view class="subtitle">{{b.title}} · 原时间 {{b.startText}}</view>
+    <view class="field-title">新的日期</view><picker mode="date" value="{{date}}" start="{{minDate}}" end="{{maxDate}}" data-field="date" bindchange="change"><view class="input">{{date}}　⌄</view></picker>
+    <view class="field-title">新的时间</view><picker mode="time" value="{{time}}" data-field="time" bindchange="change"><view class="input">{{time}}　⌄</view></picker>
+    <view class="field-title">预留多久？</view><picker range="{{durations}}" value="{{durationIndex}}" data-field="durationIndex" bindchange="change"><view class="input">{{durations[durationIndex]}}　⌄</view></picker>
+    <view class="notice">{{b.status === 'pending' ? '邀请尚未确认，可以直接修改时间；对方打开邀请会看到新时间。' : '新时间需要对方确认。确认前，旧时间和旧提醒仍然有效。确认后，尚未发送的提醒随时间更新；已发过提醒的用户需要重新开启提醒。'}}</view>
+    <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="submit">{{b.status === 'pending' ? '保存新时间' : '发出改期申请'}}</button>
+  </block><view wx:if="{{error}}" class="error">{{error}}</view>
+</view>

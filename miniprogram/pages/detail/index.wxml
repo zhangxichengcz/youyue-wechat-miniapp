@@ -1,0 +1,29 @@
+<view wx:if="{{demo}}" class="demo">演示模式 · 邀请只在本机生效，不发送真实消息</view>
+<view class="page">
+  <view wx:if="{{loading}}" class="empty">正在打开邀请…</view>
+  <view wx:elif="{{error}}"><view class="error">{{error}}</view><button class="secondary" bindtap="retry">重新加载</button></view>
+  <view wx:elif="{{handled}}" class="empty"><view>已婉拒这次邀请</view><view class="spacer"></view><button class="secondary" bindtap="home">返回首页</button></view>
+  <block wx:elif="{{b}}">
+    <view class="detail-icon">{{b.status === 'confirmed' ? '✓' : b.status === 'pending' ? '↗' : '—'}}</view>
+    <view class="detail-heading">{{b.statusText}}</view>
+    <view class="subtitle centered">{{b.status === 'pending' ? (b.role === 'sender' ? '分享给想见的人，等待对方确认。' : '有人想把一段时间留给你。') : b.status === 'confirmed' ? '时间已留好，期待这次相见。' : '可以重新发起一次新的邀请。'}}</view>
+    <view class="card"><view class="booking-title">{{b.title}}</view><view class="detail-row"><text class="detail-key">开始时间</text><text class="detail-value">{{b.startText}}</text></view><view class="detail-row"><text class="detail-key">结束时间</text><text class="detail-value">{{b.endText}}</text></view><view class="detail-row"><text class="detail-key">见面地点</text><text class="detail-value">{{b.location}}</text></view><view class="detail-row"><text class="detail-key">发起人</text><text class="detail-value">{{b.senderName}}</text></view><view wx:if="{{b.recipientName}}" class="detail-row"><text class="detail-key">受邀人</text><text class="detail-value">{{b.recipientName}}</text></view><view wx:if="{{b.note}}" class="detail-row"><text class="detail-key">提前说的话</text><text class="detail-value">{{b.note}}</text></view></view>
+    <view wx:if="{{b.role !== 'visitor'}}" class="notice"><view class="row"><text>我的提醒</text><text>{{b.reminderText}}</text></view><view class="muted">{{b.otherReminderEnabled ? '对方已开启提醒' : '对方尚未开启提醒'}} · 提前 1 天</view><view wx:if="{{b.status === 'pending'}}" class="muted">对方确认后才会安排发送。</view></view>
+    <view wx:if="{{b.proposedStartAt && b.canAct}}" class="notice"><view>改期申请 · {{b.proposedStartText}}</view><view>至 {{b.proposedEndText}}</view><view class="muted">{{b.canConfirmReschedule ? '请确认是否接受对方的新时间。' : '等待对方确认；可撤回申请。'}}确认前仍按原时间赴约和提醒。</view></view>
+    <view wx:if="{{b.role === 'visitor' && b.canAct}}"><view class="field-title">对方怎么称呼你？</view><input class="input" placeholder="填写你的称呼" maxlength="20" value="{{name}}" bindinput="inputName" /><view class="notice">确认后，记得点击“开启我的提醒”。双方需要各自授权，才能分别收到微信通知。</view></view>
+    <view class="actions">
+      <button wx:if="{{b.role === 'visitor' && b.canAct}}" class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="accept">确认预约</button>
+      <button wx:if="{{b.role === 'sender' && b.status === 'pending' && b.canAct && !demo}}" class="primary" open-type="share">分享邀请给对方</button>
+      <button wx:if="{{b.role !== 'visitor' && b.canAct && (b.reminderStatus === 'none' || b.reminderStatus === 'failed')}}" class="{{b.status === 'confirmed' ? 'primary' : 'secondary'}}" loading="{{busy}}" disabled="{{busy}}" bindtap="enableReminder">开启我的提醒</button>
+      <button wx:if="{{b.role === 'visitor' && b.canAct}}" class="secondary" disabled="{{busy}}" bindtap="decline">这次先不了</button>
+      <button wx:if="{{b.role !== 'visitor' && b.canAct}}" class="danger" disabled="{{busy}}" bindtap="cancel">取消预约</button>
+      <button wx:if="{{supportsReschedule && b.canReschedule && !b.proposedStartAt}}" class="secondary" disabled="{{busy}}" bindtap="reschedule">{{b.status === 'pending' ? '修改邀请时间' : '申请改期'}}</button>
+      <button wx:if="{{b.proposedStartAt && b.canConfirmReschedule && b.canAct}}" class="primary" disabled="{{busy}}" bindtap="acceptReschedule">同意改期</button>
+      <button wx:if="{{b.proposedStartAt && b.canConfirmReschedule && b.canAct}}" class="secondary" disabled="{{busy}}" bindtap="rejectReschedule">保留原时间</button>
+      <button wx:if="{{b.proposedStartAt && !b.canConfirmReschedule && b.canAct}}" class="secondary" disabled="{{busy}}" bindtap="withdrawReschedule">撤回改期申请</button>
+      <button wx:if="{{demo}}" class="secondary" disabled="{{busy}}" bindtap="switchRole">切换身份：{{b.role === 'sender' ? '体验受邀人' : '体验发起人'}}</button>
+      <button wx:if="{{b.role !== 'visitor'}}" class="secondary" bindtap="bookings">查看我的预约</button>
+    </view>
+    <view class="footer-note">北京时间 · 预约记录可在“我的预约”查看</view>
+  </block>
+</view>

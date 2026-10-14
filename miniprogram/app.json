@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/create/index",
+    "pages/detail/index",
+    "pages/bookings/index",
+    "pages/reschedule/index",
+    "pages/diagnostics/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "有约",
+    "navigationBarBackgroundColor": "#f8f8f2",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f2"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

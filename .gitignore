@@ -1,0 +1,16 @@
+node_modules/
+project.private.config.json
+*.log
+.env
+.dev.vars
+.wrangler/
+
+.env.*
+.dev.vars.*
+*.pem
+*.key
+*.sqlite
+*.sqlite-*
+*.db
+*.zip
+.DS_Store

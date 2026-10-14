@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>有约 · 微信小程序交互演示</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <header class="top"><a class="wordmark" href="#">有约<span>●</span></a><span class="top-caption">PRIVATE MOMENTS, THOUGHTFULLY PLANNED</span><span class="demo-label">微信小程序 · 交互演示</span></header>
+  <main class="layout">
+    <section class="intro"><div class="kicker">让相见有期 / YOUYUE</div><h1>把时间留给<br><em>值得的见面。</em></h1><p class="lead">从一个邀请开始，让私人会面与咨询<br class="desktop">有安排，也有回应。</p><div class="intro-actions"><button id="start-demo" class="main-button">体验发起预约 <span>↗</span></button><button id="view-list" class="quiet-button">查看预约记录</button></div><div class="flow"><span>01 <b>选内容与时间</b></span><i>→</i><span>02 <b>对方确认</b></span><i>→</i><span>03 <b>双方提醒</b></span></div><div class="footline"><span class="small-sun">✳</span><p>提前 1 天，记得这次相见。<br><small>确认不足 1 天时，授权后尽快提醒。</small></p></div><p class="disclosure">本页是可点击的本机演示，提醒与身份均为模拟。<br>真实小程序源码、云函数及部署说明已随项目提供。</p></section>
+    <section class="phone-area" aria-label="小程序演示"><div class="phone"><div class="status-bar"><span>9:41</span><span>●●● ▰</span></div><div class="nav"><button id="back" class="nav-back" aria-label="返回">‹</button><span>有约</span><div class="wechat-pill">••• <i></i> ⊙</div></div><div class="phone-banner">演示模式 · 不发送真实微信通知</div><div id="screen" class="screen"></div><div class="home-indicator"></div></div><div class="phone-caption"><span class="dot"></span> 点击手机内的按钮，体验完整预约流程</div></section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body></html>

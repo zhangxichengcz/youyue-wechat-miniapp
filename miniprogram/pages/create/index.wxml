@@ -1,0 +1,17 @@
+<view wx:if="{{demo}}" class="demo">演示模式 · 本机体验，不发送微信通知</view>
+<view class="page">
+  <text class="eyebrow">A LITTLE PLAN FOR US</text>
+  <view class="title">约一个好时间</view><view class="subtitle">把安排发给对方，确认后一起赴约。</view>
+  <view class="field-title">想一起做什么？</view>
+  <view class="choices"><view wx:for="{{activities}}" wx:key="*this" class="choice {{selected === item ? 'selected' : ''}}" data-value="{{item}}" bindtap="activity">{{item}}</view></view>
+  <input wx:if="{{selected === '自定义'}}" class="input" placeholder="活动内容，最多 20 字" maxlength="20" value="{{customTitle}}" data-field="customTitle" bindinput="input" />
+  <view class="field-title">选择日期与时间</view>
+  <view class="row"><picker class="date-picker" mode="date" value="{{date}}" start="{{minDate}}" end="{{maxDate}}" data-field="date" bindchange="input"><view class="input">{{date}} <text class="picker-arrow">⌄</text></view></picker><picker class="time-picker" mode="time" value="{{time}}" data-field="time" bindchange="input"><view class="input">{{time}} <text class="picker-arrow">⌄</text></view></picker></view>
+  <view class="field-title">预留多久？</view><picker mode="selector" range="{{durations}}" value="{{durationIndex}}" bindchange="duration"><view class="input">{{durations[durationIndex]}} <text class="picker-arrow">⌄</text></view></picker>
+  <view class="field-title">你的称呼</view><input class="input" placeholder="让对方知道你是谁" maxlength="20" value="{{name}}" data-field="name" bindinput="input" />
+  <view class="field-title">在哪里见？</view><input class="input" placeholder="具体地点，或线上会议方式" maxlength="80" value="{{location}}" data-field="location" bindinput="input" />
+  <view class="field-title">想提前说的话 <text class="optional">选填</text></view><textarea class="input textarea" placeholder="聊什么、需要准备什么，都可以写在这里" maxlength="200" value="{{note}}" data-field="note" bindinput="input" />
+  <view class="notice">双方可分别开启提前 1 天的微信提醒。若确认时距离开始不足 1 天，开启后尽快提醒。</view>
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+  <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="submit">生成邀请</button><view class="footer-note">时间均为北京时间 · 对方确认后预约成功</view>
+</view>

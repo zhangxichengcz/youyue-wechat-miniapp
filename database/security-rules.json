@@ -1,0 +1,6 @@
+{
+  "profiles": { "read": false, "write": false },
+  "calendars": { "read": false, "write": false },
+  "bookings": { "read": false, "write": false },
+  "reminder_jobs": { "read": false, "write": false }
+}

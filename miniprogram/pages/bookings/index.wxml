@@ -1,0 +1,8 @@
+<view wx:if="{{demo}}" class="demo">演示模式 · 数据仅保存在本机</view>
+<view class="page"><text class="eyebrow">YOUR LITTLE PLANS</text><view class="row"><view class="title">我的预约</view><text class="link" bindtap="create">＋ 新预约</text></view>
+  <view class="tabs"><view wx:for="{{filters}}" wx:key="id" class="tab {{filter === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="filter">{{item.label}}</view></view>
+  <view wx:if="{{error}}" class="error" bindtap="retry">{{error}} · 点击重试</view>
+  <view wx:for="{{visible}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="detail"><view class="row"><text class="item-title">{{item.title}}</text><text class="pill">{{item.statusText}}</text></view><view class="item-time">{{item.startText}}</view><view class="muted">{{item.location}}</view><view class="item-footer"><text>{{item.role === 'sender' ? '我发起的' : '我收到的'}}</text><text>{{item.role === 'sender' ? (item.recipientName || '等待对方') : item.senderName}} ↗</text></view></view>
+  <view wx:if="{{!visible.length && !loading && !error}}" class="empty">这里还没有预约<view class="muted">发起一个邀请，让下一次见面有着落。</view></view>
+  <view wx:if="{{loading}}" class="footer-note">正在加载…</view><button wx:if="{{hasMore}}" class="secondary" disabled="{{loading}}" bindtap="more">查看更多预约</button>
+</view>
