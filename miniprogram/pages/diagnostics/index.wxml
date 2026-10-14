@@ -1,8 +1,8 @@
 <view class="page">
-  <view class="title">有约 · 手机连接检测</view>
-  <view class="notice">这是临时检测版。请先完成下面两项，再进入预约页面。</view>
+  <view class="title">有约 · 连接帮助</view>
+  <view class="notice">遇到连接问题时，可以检查下面两项。检测结果便于维护者排查原因。</view>
   <view class="card">
-    <view>检测代码版本：{{build}}</view>
+    <view>程序版本：{{build}}</view>
     <view>小程序版本标识：{{actualVersion}}</view>
     <view class="address" selectable="true">实际 AppID：{{actualAppId}}</view>
     <view>运行环境：{{environment}}</view>
@@ -15,5 +15,5 @@
   <button class="secondary" bindtap="checkLogin" disabled="{{busy}}">2. 检测微信登录</button>
   <view class="result" selectable="true">{{login}}</view>
   <button class="secondary" bindtap="home" disabled="{{busy}}">进入预约首页</button>
-  <view class="footer-note">将两项结果截图给维护者即可，检测页不会显示登录凭证。</view>
+  <view class="footer-note">可以将检测结果截图给维护者，本页不会显示登录凭证。</view>
 </view>

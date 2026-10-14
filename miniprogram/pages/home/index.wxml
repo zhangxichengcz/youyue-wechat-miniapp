@@ -14,6 +14,6 @@
   <view wx:elif="{{loading}}" class="muted">正在查看日程…</view>
   <view wx:elif="{{next}}" class="card" bindtap="detail"><view class="row"><text class="next-title">{{next.title}}</text><text class="pill">已确认</text></view><view class="next-time">{{next.startText}}</view><view class="muted">{{next.location}} · {{next.role === 'sender' ? next.recipientName : next.senderName}}</view></view>
   <view wx:else class="card quiet"><view class="quiet-icon">☀</view><view>还没有确认的见面</view><view class="muted">从一个邀请开始，安排你的下一次相见。</view></view>
-  <view class="footer-note">双方确认 · 提前 1 天提醒 · 可随时取消</view>
-  <view class="footer-note" bindtap="diagnostics">连接检测 · 检测版 1.0.5</view>
+  <view class="footer-note">双方确认 · 授权后提醒 · 可随时取消</view>
+  <view class="footer-note" bindtap="diagnostics">连接帮助</view>
 </view>

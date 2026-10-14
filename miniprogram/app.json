@@ -1,12 +1,5 @@
 {
-  "pages": [
-    "pages/home/index",
-    "pages/create/index",
-    "pages/detail/index",
-    "pages/bookings/index",
-    "pages/reschedule/index",
-    "pages/diagnostics/index"
-  ],
+  "pages": ["pages/home/index", "pages/create/index", "pages/detail/index", "pages/bookings/index", "pages/reschedule/index", "pages/diagnostics/index"],
   "window": {
     "navigationBarTitleText": "有约",
     "navigationBarBackgroundColor": "#f8f8f2",

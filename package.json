@@ -1,6 +1,6 @@
 {
   "name": "youyue-wechat-miniapp",
-  "version": "1.0.0",
+  "version": "1.1.0-rc.1",
   "private": true,
   "description": "普通用户之间的微信预约与双方提醒",
   "scripts": {

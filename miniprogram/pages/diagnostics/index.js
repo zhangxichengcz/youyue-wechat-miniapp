@@ -1,6 +1,6 @@
 // 临时真机检测页：不依赖业务模块、Promise、async 或编译运行时辅助模块。
 Page({
-  data: { build: '1.0.5', actualVersion: '读取中', actualAppId: '未能读取', environment: '未能读取', clientVersion: '未能读取', debugMode: '未能读取', base: '', busy: false, health: '尚未检测', login: '尚未检测' },
+  data: { build: '1.1.0-rc.1', actualVersion: '读取中', actualAppId: '未能读取', environment: '未能读取', clientVersion: '未能读取', debugMode: '未能读取', base: '', busy: false, health: '尚未检测', login: '尚未检测' },
   onLoad: function () {
     var config = getApp().globalData.config;
     var actualVersion = '开发预览';
