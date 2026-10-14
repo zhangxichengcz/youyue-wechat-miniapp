@@ -1,14 +1,25 @@
 // 临时真机检测页：不依赖业务模块、Promise、async 或编译运行时辅助模块。
 Page({
-  data: { build: '1.0.4', actualVersion: '读取中', base: '', busy: false, health: '尚未检测', login: '尚未检测' },
+  data: { build: '1.0.5', actualVersion: '读取中', actualAppId: '未能读取', environment: '未能读取', clientVersion: '未能读取', debugMode: '未能读取', base: '', busy: false, health: '尚未检测', login: '尚未检测' },
   onLoad: function () {
     var config = getApp().globalData.config;
     var actualVersion = '开发预览';
+    var actualAppId = '未能读取';
+    var environment = '未能读取';
+    var clientVersion = '未能读取';
+    var debugMode = '未能读取';
     try {
       var info = wx.getAccountInfoSync();
       actualVersion = info.miniProgram.version || info.miniProgram.envVersion || actualVersion;
+      actualAppId = info.miniProgram.appId || actualAppId;
+      environment = info.miniProgram.envVersion || environment;
     } catch (_) {}
-    this.setData({ base: config.apiBase || '', actualVersion: actualVersion });
+    try {
+      var client = typeof wx.getAppBaseInfo === 'function' ? wx.getAppBaseInfo() : wx.getSystemInfoSync();
+      clientVersion = client.version || clientVersion;
+      if (typeof client.enableDebug === 'boolean') debugMode = client.enableDebug ? '已开启' : '未开启';
+    } catch (_) {}
+    this.setData({ base: config.apiBase || '', actualVersion: actualVersion, actualAppId: actualAppId, environment: environment, clientVersion: clientVersion, debugMode: debugMode });
   },
   failure: function (stage, failure) {
     // wx.request 的错误描述仅用于定位网络；不展示请求正文、授权头或响应令牌。

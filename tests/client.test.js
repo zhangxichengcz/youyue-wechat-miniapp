@@ -24,7 +24,8 @@ function isolatedDiagnostics(wx) {
 test('手机检测页独立验证微信内的GET与POST，结果不显示登录令牌', () => {
   const requests = [];
   const page = isolatedDiagnostics({
-    getAccountInfoSync: () => ({ miniProgram: { version: '1.0.3', envVersion: 'trial' } }),
+    getAccountInfoSync: () => ({ miniProgram: { appId: 'wx-test-app', version: '1.0.3', envVersion: 'trial' } }),
+    getAppBaseInfo: () => ({ version: '8.0.fixture', enableDebug: false }),
     login: options => options.success({ code: 'private-login-fixture' }),
     request: options => {
       requests.push(options);
@@ -35,6 +36,10 @@ test('手机检测页独立验证微信内的GET与POST，结果不显示登录�
   });
   page.checkHealth(); page.checkLogin();
   assert.equal(page.data.actualVersion, '1.0.3');
+  assert.equal(page.data.actualAppId, 'wx-test-app');
+  assert.equal(page.data.environment, 'trial');
+  assert.equal(page.data.clientVersion, '8.0.fixture');
+  assert.equal(page.data.debugMode, '未开启');
   assert.match(page.data.health, /后台连接正常/);
   assert.match(page.data.login, /微信登录正常/);
   assert.equal(requests[0].url, 'https://entry.example/health');
@@ -42,6 +47,18 @@ test('手机检测页独立验证微信内的GET与POST，结果不显示登录�
   assert.equal(requests[1].data.code, 'private-login-fixture');
   assert.equal(JSON.stringify(page.data).includes('private-'), false);
   assert.equal(page.data.busy, false);
+});
+test('检测页兼容旧版系统信息接口，读取失败也不阻止网络检测', () => {
+  const page = isolatedDiagnostics({
+    getAccountInfoSync: () => { throw new Error('unavailable'); },
+    getSystemInfoSync: () => ({ version: '8.0.legacy', enableDebug: true }),
+    request: options => options.success({ statusCode: 200, data: { ok: true, configured: true, remindersConfigured: true } })
+  });
+  assert.equal(page.data.actualAppId, '未能读取');
+  assert.equal(page.data.clientVersion, '8.0.legacy');
+  assert.equal(page.data.debugMode, '已开启');
+  page.checkHealth();
+  assert.match(page.data.health, /后台连接正常/);
 });
 test('微信请求失败时检测页保留具体连接错误并允许重试', () => {
   let success = false;

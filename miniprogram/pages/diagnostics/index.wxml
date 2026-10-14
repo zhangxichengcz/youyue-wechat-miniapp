@@ -3,7 +3,11 @@
   <view class="notice">这是临时检测版。请先完成下面两项，再进入预约页面。</view>
   <view class="card">
     <view>检测代码版本：{{build}}</view>
-    <view>微信版本标识：{{actualVersion}}</view>
+    <view>小程序版本标识：{{actualVersion}}</view>
+    <view class="address" selectable="true">实际 AppID：{{actualAppId}}</view>
+    <view>运行环境：{{environment}}</view>
+    <view>微信客户端版本：{{clientVersion}}</view>
+    <view>微信调试状态：{{debugMode}}</view>
     <view class="address">服务地址：{{base}}</view>
   </view>
   <button class="primary" bindtap="checkHealth" disabled="{{busy}}">1. 检测后台连接</button>
